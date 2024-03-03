@@ -40,26 +40,9 @@ git config --global delta.light-mode.syntax-theme "Solarized (light)"
 git config --global delta.dark-mode.light false
 git config --global delta.dark-mode.syntax-theme "Solarized (dark)"
 
-echo "Configuring iTerm..."
-mkdir -p "$HOME/.iterm2"
-ln -sfn "$PWD/.iterm2/com.googlecode.iterm2.plist" "$HOME/.iterm2/com.googlecode.iterm2.plist"
-
 echo "Configuring vim..."
 cp -R "$PWD/.vim/" "$HOME/.vim"
 ln -sfn "$PWD/.vimrc" "$HOME/.vimrc"
 vim -Esu "$HOME/.vimrc" +PlugInstall +qall
-
-echo "Configuring ssh..."
-mkdir -p "$HOME/.ssh"
-ln -sfn "$PWD/.ssh/config" "$HOME/.ssh/config"
-
-echo "Configuring daemon that remaps Caps Lock to Escape..."
-mkdir -p ~/Library/LaunchAgents
-cp "$PWD/escape-map.plist" ~/Library/LaunchAgents/custom.escape-map.plist
-launchctl load -w ~/Library/LaunchAgents/custom.escape-map.plist
-
-echo "Configuring daemon that preloads ssh keys from keychain..."
-cp "$PWD/ssh-add.plist" ~/Library/LaunchAgents/custom.ssh-add.plist
-launchctl load -w ~/Library/LaunchAgents/custom.ssh-add.plist
 
 echo "Installation complete! Please reboot your machine."
