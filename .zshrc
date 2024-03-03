@@ -21,6 +21,6 @@ alias cat="bat"
 HISTORY_IGNORE="(dot|ls|vim|fg|gs|gd|gl|gf|gds|gc|gca)"
 
 # Custom aliases
-alias dot="cd ~/dev/dotfiles"
+alias dot="cd ~/dotfiles"
 alias gbd="git branch -D"
 alias gs="git status"
