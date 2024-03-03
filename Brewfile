@@ -14,6 +14,6 @@ brew 'vim'
 brew 'yarn'
 
 cask 'firefox'
-cask 'font-jetbrains-mono'
 cask 'google-chrome'
+cask 'rectangle'
 cask 'iterm2-beta'
