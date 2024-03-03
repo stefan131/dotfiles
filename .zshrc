@@ -24,20 +24,3 @@ HISTORY_IGNORE="(dot|ls|vim|fg|gs|gd|gl|gf|gds|gc|gca)"
 alias dot="cd ~/dev/dotfiles"
 alias gbd="git branch -D"
 alias gs="git status"
-
-# Get main branch name of the current repository (assumes it's either 'master' or 'main')
-function git_main_branch() {
-  if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]; then
-    git branch | cut -c 3- | grep -E '^master$|^main$'
-  fi
-}
-
-# Open a Pull Request for the current branch against master/main on github.com
-function gopr() {
-  if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]; then
-    github_url=`git ls-remote --get-url | sed -Ee "s#(git@|git://)#https://#" -e "s@com:@com/@" -e "s%\.git$%%"`
-    open $github_url"/compare/"$(git_main_branch)"..."$(git_current_branch)"?expand=1"
-  else
-    echo "not in a git repository"
-  fi
-}
