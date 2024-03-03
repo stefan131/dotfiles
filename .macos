@@ -3,7 +3,7 @@
 # Move windows by using ctl + cmd + mouse
 defaults write NSGlobalDomain NSWindowShouldDragOnGesture -bool true
 
-# Expand save panel by default
+# Expand save file panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 
 # Expand print panel by default

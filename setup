@@ -1,30 +1,34 @@
 #!/usr/bin/env bash
 
 echo "Installing homebrew..."
+# Install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Initialize homebrew packages to path in new sessions
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
+# Initialize homebrew packages in this session
 eval "$(/opt/homebrew/bin/brew shellenv)"
+# Run brew bundle with no output
 brew bundle --no-lock >> /dev/null
+# Run brew cleanup with no output
 brew cleanup >> /dev/null
 
 echo "Installing ohmyzsh..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# Link .zshrc in this directory to the active one in the home dir
 ln -sfn "$PWD/.zshrc" "$HOME/.zshrc"
 
 echo "Configuring macOS settings..."
 sh .macos
 
 echo "Configuring git..."
-git config --global commit.gpgsign true
 git config --global core.editor vim
 git config --global core.ignorecase false
 git config --global gpg.format ssh
 git config --global merge.tool vimdiff
 git config --global pull.rebase true
 git config --global fetch.prune true
-git config --global user.email hvandevliert@icloud.com
-git config --global user.name "Hugo van de Vliert"
-git config --global user.signingkey "$HOME/.ssh/id_ed25519.pub"
+git config --global user.email stefan131@outlook.com
+git config --global user.name "Stefan van Tilborg"
 
 # delta settings
 git config --global core.pager 'delta --paging always --features "$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo dark-mode || echo light-mode)"'
